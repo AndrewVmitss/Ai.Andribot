@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Andribot Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Сброс стилей */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(to bottom, #6a0dad, #e0e0e0); /* Фиолетовый сверху, серый снизу */
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      user-select: none;
+    }
+    /* Контейнер для чата с фиксированными размерами */
+    .container {
+      width: 600px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    /* Шапка с названием бота и статусом */
+    .header {
+      background: #6a0dad; /* Фиолетовый цвет */
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    .header h1 { font-size: 24px; margin-bottom: 5px; }
+    .header p { font-size: 12px; opacity: 0.8; }
+    /* Область чата */
+    .chat-box {
+      background: #6a0dad; /* Фиолетовый фон для сообщений */
+      color: #fff;
+      height: 400px;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .chat-message {
+      margin-bottom: 15px;
+    }
+    .chat-message.user {
+      text-align: right;
+      color: #a8b4ff;
+    }
+    .chat-message.bot {
+      text-align: left;
+    }
+    /* Область ввода сообщений */
+    .input-area {
+      background: #f9f9f9;
+      padding: 15px;
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    #userInput {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #bcb0ff;
+      border-radius: 5px;
+      resize: none;
+    }
+    #sendButton {
+      background: #6a0dad;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #sendButton:hover {
+      background: #580ea2;
+    }
+    /* Сообщение "Думаю..." */
+    #thinking {
+      text-align: center;
+      font-style: italic;
+      color: #ccc;
+      display: none;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Andribot</h1>
+      <p>Бот в разработке</p>
+    </div>
+    <div class="chat-box" id="chat">
+      <!-- Сообщения чата будут добавляться через script.js -->
+    </div>
+    <div id="thinking">Думаю...</div>
+    <div class="input-area">
+      <textarea id="userInput" rows="1" placeholder="Введите сообщение..."></textarea>
+      <button id="sendButton" onclick="sendMessage()">Отправить</button>
+    </div>
+  </div>
+  <!-- Подключаем math.js через CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.0/math.min.js"></script>
+  <!-- Подключаем наш скрипт для математики -->
+  <script src="matematika.js"></script>
+  <!-- Подключаем основной скрипт бота -->
+  <script src="ai.js"></script>
+  <script src="math.js"></script>
+</body>
+</html>
