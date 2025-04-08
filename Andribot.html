@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Andribot Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(to bottom, #6a0dad, #e0e0e0);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      user-select: none;
+      position: relative;
+      transition: background 0.5s ease;
+    }
+
+    body.dark {
+      background: linear-gradient(to bottom, #000, #333);
+    }
+
+    .container {
+      width: 600px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    body.dark .container {
+      background: #1e1e1e;
+      color: #fff;
+    }
+
+    .header {
+      background: #6a0dad;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .header h1 { font-size: 24px; margin-bottom: 5px; }
+    .header p { font-size: 12px; opacity: 0.8; }
+
+    .chat-box {
+      background: #6a0dad;
+      color: #fff;
+      height: 400px;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .chat-message {
+      margin-bottom: 15px;
+    }
+
+    .chat-message.user {
+      text-align: right;
+      color: #a8b4ff;
+    }
+
+    .chat-message.bot {
+      text-align: left;
+    }
+
+    .input-area {
+      background: #f9f9f9;
+      padding: 15px;
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    body.dark .input-area {
+      background: #2a2a2a;
+    }
+
+    #userInput {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #bcb0ff;
+      border-radius: 5px;
+      resize: none;
+      background-color: #fff;
+    }
+
+    body.dark #userInput {
+      background-color: #444;
+      color: #fff;
+      border: 1px solid #666;
+    }
+
+    #sendButton {
+      background: #6a0dad;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #sendButton:hover {
+      background: #580ea2;
+    }
+
+    #thinking {
+      text-align: center;
+      font-style: italic;
+      color: #ccc;
+      display: none;
+      margin: 10px 0;
+    }
+
+    .version {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: #ffffffaa;
+      color: #6a0dad;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      user-select: none;
+    }
+
+    .top-buttons {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .top-buttons button {
+      background: #ffffffcc;
+      border: none;
+      border-radius: 8px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      color: #6a0dad;
+      transition: background 0.3s;
+    }
+
+    .top-buttons button:hover {
+      background: #ececec;
+    }
+  </style>
+</head>
+<body>
+  <div class="version">Alpha-0.3</div>
+
+  <div class="top-buttons">
+    <button onclick="location.reload()">🔄 Обновить</button>
+    <button onclick="toggleTheme()" id="themeToggle">🌙 Темный режим</button>
+  </div>
+
+  <div class="container">
+    <div class="header">
+      <h1>Andribot</h1>
+      <p>Бот в разработке</p>
+    </div>
+    <div class="chat-box" id="chat"></div>
+    <div id="thinking">Думаю...</div>
+    <div class="input-area">
+      <textarea id="userInput" rows="1" placeholder="Введите сообщение..."></textarea>
+      <button id="sendButton" onclick="sendMessage()">Отправить</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const toggleBtn = document.getElementById('themeToggle');
+      body.classList.toggle('dark');
+      toggleBtn.textContent = body.classList.contains('dark') ? '☀️ Светлый режим' : '🌙 Темный режим';
+    }
+  </script>
+
+  <script src="ai.js"></script>
+  <script src="math.js"></script>
+</body>
+</html>
